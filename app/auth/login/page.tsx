@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -59,7 +59,7 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <Link href="/">
             <span className="font-serif font-medium tracking-[0.3em] text-2xl" style={{ color: "var(--emerald-deep)" }}>
-              LUMORA
+              BALAJI
             </span>
           </Link>
           <p className="section-eyebrow mt-2">Sign In to Your Account</p>
@@ -137,7 +137,7 @@ export default function LoginPage() {
           </form>
 
           <p className="text-center text-sm mt-6" style={{ color: "var(--slate)" }}>
-            New to LUMORA?{" "}
+            New to BALAJI?{" "}
             <Link href="/auth/register" className="font-semibold underline underline-offset-2" style={{ color: "var(--emerald)" }}>
               Create account
             </Link>

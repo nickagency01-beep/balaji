@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import CatalogClient from "./CatalogClient";
 import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Collections — Fine Jewelry",
   description:
-    "Explore LUMORA's complete jewelry collection. Filter by metal, gemstone, price, and more.",
+    "Explore BALAJI's complete jewelry collection. Filter by metal, gemstone, price, and more.",
 };
 
 interface SearchParams {

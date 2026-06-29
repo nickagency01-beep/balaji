@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -62,7 +62,7 @@ export default function BrandStory() {
             </h2>
             <div className="divider-gold-left mb-6" />
             <p className="leading-relaxed mb-4" style={{ color: "var(--emerald-mist)" }}>
-              LUMORA was founded on a single belief: that fine jewelry should feel as meaningful as it looks.
+              BALAJI was founded on a single belief: that fine jewelry should feel as meaningful as it looks.
               We work with generational artisans in Jaipur, Mumbai, and Antwerp, fusing ancient goldsmithing
               traditions with contemporary design sensibility.
             </p>

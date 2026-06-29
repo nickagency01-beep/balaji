@@ -468,7 +468,7 @@ export default function ProductDetailClient({ product, related }: Props) {
 
               <AccordionItem title="Care Instructions">
                 <p>Store in the provided pouch or box when not wearing. Avoid contact with perfumes, lotions, and chlorine. Clean gently with a soft cloth.</p>
-                <p className="mt-2">Complimentary cleaning and inspection at any LUMORA boutique.</p>
+                <p className="mt-2">Complimentary cleaning and inspection at any BALAJI boutique.</p>
               </AccordionItem>
             </div>
           </div>

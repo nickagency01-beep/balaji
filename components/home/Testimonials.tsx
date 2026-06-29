@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
@@ -15,7 +15,7 @@ const TESTIMONIALS = [
     name: "Anika Mehta",
     location: "Delhi",
     rating: 5,
-    text: "I used the Design Your Own tool and had a pendant made from my grandmother's description. LUMORA brought it to life perfectly. A cherished heirloom.",
+    text: "I used the Design Your Own tool and had a pendant made from my grandmother's description. BALAJI brought it to life perfectly. A cherished heirloom.",
     piece: "Custom Heritage Pendant",
   },
   {
@@ -94,7 +94,7 @@ export default function Testimonials() {
           { num: "4.9", label: "Average Rating", sub: "from 2,400+ reviews" },
           { num: "100%", label: "Certified Gold", sub: "BIS Hallmarked" },
           { num: "30-Day", label: "Return Policy", sub: "Hassle-free returns" },
-          { num: "Free", label: "Lifetime Cleaning", sub: "At any LUMORA store" },
+          { num: "Free", label: "Lifetime Cleaning", sub: "At any BALAJI store" },
         ].map(({ num, label, sub }) => (
           <div key={label} className="text-center">
             <div

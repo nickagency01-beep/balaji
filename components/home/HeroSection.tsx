@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
@@ -81,7 +81,7 @@ export default function HeroSection() {
             className="text-base leading-relaxed max-w-md"
             style={{ color: "var(--emerald-mist)" }}
           >
-            Each LUMORA piece is handcrafted by master artisans — a marriage of ancient technique and
+            Each BALAJI piece is handcrafted by master artisans — a marriage of ancient technique and
             contemporary vision. Ethically sourced gemstones, certified gold, crafted to last a lifetime.
           </motion.p>
 

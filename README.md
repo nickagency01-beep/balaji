@@ -1,4 +1,4 @@
-# LUMORA — Fine Jewelry E-Commerce Platform
+﻿# BALAJI — Fine Jewelry E-Commerce Platform
 
 A fully original luxury jewelry e-commerce platform built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + PostgreSQL + Prisma + Stripe**.
 
@@ -54,9 +54,9 @@ npm run db:seed
 ```
 
 **Seed credentials:**
-- Admin: `admin@lumora.com` / `admin@lumora123`
+- Admin: `admin@BALAJI.com` / `admin@BALAJI123`
 - Customer: `priya@example.com` / `customer123`
-- Coupons: `WELCOME10` (10% off $500+) · `LUMORA500` ($500 off $3k+)
+- Coupons: `WELCOME10` (10% off $500+) · `BALAJI500` ($500 off $3k+)
 
 ### 4. Run
 ```bash

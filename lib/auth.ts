@@ -1,12 +1,12 @@
-import { SignJWT, jwtVerify } from "jose";
+﻿import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { prisma } from "./prisma";
 
 const ACCESS_SECRET = new TextEncoder().encode(
-  process.env.JWT_ACCESS_SECRET ?? "lumora-access-secret-change-in-prod"
+  process.env.JWT_ACCESS_SECRET ?? "BALAJI-access-secret-change-in-prod"
 );
 const REFRESH_SECRET = new TextEncoder().encode(
-  process.env.JWT_REFRESH_SECRET ?? "lumora-refresh-secret-change-in-prod"
+  process.env.JWT_REFRESH_SECRET ?? "BALAJI-refresh-secret-change-in-prod"
 );
 
 export interface JWTPayload {

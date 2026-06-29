@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import CategoryShowcase from "@/components/home/CategoryShowcase";
 import BrandStory from "@/components/home/BrandStory";
@@ -8,7 +8,7 @@ import Testimonials from "@/components/home/Testimonials";
 import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
-  title: "LUMORA — Fine Jewelry Handcrafted in Gold & Precious Stones",
+  title: "BALAJI — Fine Jewelry Handcrafted in Gold & Precious Stones",
 };
 
 async function getFeaturedProducts() {

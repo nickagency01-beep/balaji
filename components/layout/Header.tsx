@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -86,7 +86,7 @@ export default function Header() {
         <Link
           href="/"
           className="flex-shrink-0 group"
-          aria-label="LUMORA home"
+          aria-label="BALAJI home"
         >
           <div className="flex flex-col items-center leading-none">
             <span
@@ -96,7 +96,7 @@ export default function Header() {
               )}
               style={{ color: transparent ? "#fff" : "var(--emerald-deep)" }}
             >
-              LUMORA
+              BALAJI
             </span>
             <span
               className={cn(

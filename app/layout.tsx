@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -7,14 +7,14 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import AuthProvider from "@/components/layout/AuthProvider";
 
 export const metadata: Metadata = {
-  title: { default: "LUMORA — Fine Jewelry", template: "%s | LUMORA" },
+  title: { default: "BALAJI — Fine Jewelry", template: "%s | BALAJI" },
   description:
-    "Discover LUMORA's collection of handcrafted fine jewelry. Rings, necklaces, earrings, and bracelets in gold, platinum, and precious gemstones.",
-  keywords: ["luxury jewelry", "fine jewelry", "diamond rings", "gold necklaces", "LUMORA"],
+    "Discover BALAJI's collection of handcrafted fine jewelry. Rings, necklaces, earrings, and bracelets in gold, platinum, and precious gemstones.",
+  keywords: ["luxury jewelry", "fine jewelry", "diamond rings", "gold necklaces", "BALAJI"],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "LUMORA Fine Jewelry",
+    siteName: "BALAJI Fine Jewelry",
   },
 };
 

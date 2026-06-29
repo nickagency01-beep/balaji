@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
+﻿import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("🌱 Seeding LUMORA database…");
+  console.log("🌱 Seeding BALAJI database…");
 
   // ─── Categories ───────────────────────────────────────────────────────────
   const [rings, necklaces, earrings, bracelets, pendants] = await Promise.all([
@@ -36,13 +36,13 @@ async function main() {
   ]);
 
   // ─── Admin user ───────────────────────────────────────────────────────────
-  const adminHash = await bcrypt.hash("admin@lumora123", 12);
+  const adminHash = await bcrypt.hash("admin@BALAJI123", 12);
   await prisma.user.upsert({
-    where: { email: "admin@lumora.com" },
+    where: { email: "admin@BALAJI.com" },
     update: {},
     create: {
-      email: "admin@lumora.com",
-      name: "LUMORA Admin",
+      email: "admin@BALAJI.com",
+      name: "BALAJI Admin",
       passwordHash: adminHash,
       role: "ADMIN",
       isVerified: true,
@@ -292,10 +292,10 @@ async function main() {
   });
 
   await prisma.coupon.upsert({
-    where: { code: "LUMORA500" },
+    where: { code: "BALAJI500" },
     update: {},
     create: {
-      code: "LUMORA500",
+      code: "BALAJI500",
       type: "FIXED",
       value: 500,
       minOrderValue: 3000,
@@ -305,9 +305,9 @@ async function main() {
   });
 
   console.log("\n✅ Seed complete!");
-  console.log("   Admin: admin@lumora.com / admin@lumora123");
+  console.log("   Admin: admin@BALAJI.com / admin@BALAJI123");
   console.log("   Customer: priya@example.com / customer123");
-  console.log("   Coupons: WELCOME10 (10% off $500+) · LUMORA500 ($500 off $3000+)");
+  console.log("   Coupons: WELCOME10 (10% off $500+) · BALAJI500 ($500 off $3000+)");
 }
 
 main()

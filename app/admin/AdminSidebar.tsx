@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,7 +31,7 @@ export default function AdminSidebar() {
       <div className="px-5 py-5 border-b" style={{ borderColor: "rgba(201,168,76,0.1)" }}>
         <Link href="/admin">
           <span className="font-serif font-medium tracking-[0.25em] text-sm" style={{ color: "var(--pearl)" }}>
-            LUMORA
+            BALAJI
           </span>
           <div className="text-[0.5rem] tracking-[0.3em] font-medium mt-0.5" style={{ color: "var(--gold)" }}>
             ADMIN PANEL

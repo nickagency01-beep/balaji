@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import AdminGuard from "./AdminGuard";
 import AdminSidebar from "./AdminSidebar";
 
 export const metadata: Metadata = {
-  title: { default: "Admin — LUMORA", template: "%s | Admin LUMORA" },
+  title: { default: "Admin — BALAJI", template: "%s | Admin BALAJI" },
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+﻿import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST ?? "smtp.gmail.com",
@@ -36,9 +36,9 @@ export async function sendOrderConfirmation(opts: {
     .join("");
 
   await transporter.sendMail({
-    from: `"LUMORA Jewelry" <${process.env.SMTP_USER}>`,
+    from: `"BALAJI Jewelry" <${process.env.SMTP_USER}>`,
     to: opts.to,
-    subject: `Your LUMORA Order #${opts.orderNumber} is confirmed`,
+    subject: `Your BALAJI Order #${opts.orderNumber} is confirmed`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -46,7 +46,7 @@ export async function sendOrderConfirmation(opts: {
       <body style="font-family:'Inter',sans-serif;background:#faf8f3;margin:0;padding:20px">
         <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08)">
           <div style="background:#0f3d2e;padding:32px;text-align:center">
-            <h1 style="font-family:Georgia,serif;color:#c9a84c;margin:0;font-size:32px;letter-spacing:4px">LUMORA</h1>
+            <h1 style="font-family:Georgia,serif;color:#c9a84c;margin:0;font-size:32px;letter-spacing:4px">BALAJI</h1>
             <p style="color:#a8d5b5;margin:8px 0 0;font-size:13px;letter-spacing:2px">FINE JEWELRY</p>
           </div>
           <div style="padding:40px">
@@ -70,7 +70,7 @@ export async function sendOrderConfirmation(opts: {
             </table>
             <p style="color:#555;font-size:14px">We'll send tracking information once your order ships. Expect delivery in 5–10 business days.</p>
             <div style="margin-top:32px;padding-top:24px;border-top:1px solid #e8e3d9;text-align:center">
-              <p style="color:#999;font-size:12px">Questions? Reply to this email or visit lumora.com/support</p>
+              <p style="color:#999;font-size:12px">Questions? Reply to this email or visit BALAJI.com/support</p>
             </div>
           </div>
         </div>
@@ -82,9 +82,9 @@ export async function sendOrderConfirmation(opts: {
 
 export async function sendPasswordReset(opts: { to: string; name: string; resetUrl: string }) {
   await transporter.sendMail({
-    from: `"LUMORA Jewelry" <${process.env.SMTP_USER}>`,
+    from: `"BALAJI Jewelry" <${process.env.SMTP_USER}>`,
     to: opts.to,
-    subject: "Reset your LUMORA password",
+    subject: "Reset your BALAJI password",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:40px auto">
         <h2 style="color:#0f3d2e">Reset your password</h2>

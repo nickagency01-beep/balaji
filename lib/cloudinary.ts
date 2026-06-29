@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from "cloudinary";
+﻿import { v2 as cloudinary } from "cloudinary";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -7,7 +7,7 @@ cloudinary.config({
   secure: true,
 });
 
-export async function uploadImage(base64: string, folder = "lumora/products") {
+export async function uploadImage(base64: string, folder = "BALAJI/products") {
   const result = await cloudinary.uploader.upload(base64, {
     folder,
     transformation: [{ quality: "auto", fetch_format: "auto" }],

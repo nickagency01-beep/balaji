@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export default function RegisterPage() {
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Registration failed");
       setUser(json.user);
-      toast.success("Welcome to LUMORA!");
+      toast.success("Welcome to BALAJI!");
       router.push("/account");
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Registration failed");
@@ -68,7 +68,7 @@ export default function RegisterPage() {
               className="font-serif font-medium tracking-[0.3em] text-2xl"
               style={{ color: "var(--emerald-deep)" }}
             >
-              LUMORA
+              BALAJI
             </span>
           </Link>
           <p className="section-eyebrow mt-2">Create Your Account</p>
@@ -82,7 +82,7 @@ export default function RegisterPage() {
             className="font-serif text-xl font-medium mb-6"
             style={{ color: "var(--emerald-deep)" }}
           >
-            Join the LUMORA Circle
+            Join the BALAJI Circle
           </h1>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { Share2, Rss, PlayCircle, Mail, Phone, MapPin } from "lucide-react";
 
 const LINKS = {
@@ -57,7 +57,7 @@ export default function Footer() {
               className="font-serif text-2xl font-medium"
               style={{ color: "var(--pearl)" }}
             >
-              Join the LUMORA Circle
+              Join the BALAJI Circle
             </h3>
             <p className="text-sm mt-1" style={{ color: "var(--emerald-mist)" }}>
               Early access to new collections, private events, and care guides.
@@ -98,7 +98,7 @@ export default function Footer() {
                 className="font-serif font-medium tracking-[0.3em] text-xl"
                 style={{ color: "var(--pearl)" }}
               >
-                LUMORA
+                BALAJI
               </span>
               <div
                 className="text-[0.45rem] tracking-[0.4em] font-medium mt-0.5"
@@ -161,11 +161,11 @@ export default function Footer() {
           <div className="flex flex-wrap gap-6 text-sm" style={{ color: "var(--emerald-mist)" }}>
             <span className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5" style={{ color: "var(--gold)" }} />
-              hello@lumora.com
+              hello@BALAJI.com
             </span>
             <span className="flex items-center gap-2">
               <Phone className="w-3.5 h-3.5" style={{ color: "var(--gold)" }} />
-              +1 (800) LUMORA-1
+              +1 (800) BALAJI-1
             </span>
             <span className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5" style={{ color: "var(--gold)" }} />
@@ -194,7 +194,7 @@ export default function Footer() {
           className="mt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs"
           style={{ color: "var(--emerald-light)" }}
         >
-          <p>© {new Date().getFullYear()} LUMORA Fine Jewelry. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} BALAJI Fine Jewelry. All rights reserved.</p>
           <div className="flex gap-5">
             <Link href="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold transition-colors">Terms of Service</Link>

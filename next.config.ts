@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+﻿import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "res.cloudinary.com" },
-      { protocol: "https", hostname: "cdn.lumora.com" },
+      { protocol: "https", hostname: "cdn.BALAJI.com" },
     ],
   },
   serverExternalPackages: ["bcryptjs", "@prisma/client"],

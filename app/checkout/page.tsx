@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
@@ -78,7 +78,7 @@ export default function CheckoutPage() {
         key: json.keyId,
         amount: json.amount,
         currency: json.currency,
-        name: "LUMORA",
+        name: "BALAJI",
         description: "Fine Jewelry Purchase",
         order_id: json.orderId,
         prefill: {
