@@ -27,6 +27,42 @@ export async function GET(req: NextRequest) {
   }
 }
 
+export async function POST(req: NextRequest) {
+  try {
+    await requireAdmin();
+    const body = await req.json();
+    const id = `prod_${Date.now()}`;
+    const slug = (body.slug?.trim() || body.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));
+    const { data: product, error } = await supabase
+      .from("products")
+      .insert({
+        id,
+        slug,
+        name: body.name,
+        sku: body.sku,
+        description: body.description,
+        price: Number(body.price),
+        stock: Number(body.stock ?? 0),
+        categoryId: body.categoryId,
+        metalType: body.metalType,
+        gemstone: body.gemstone || null,
+        weight: body.weight ? Number(body.weight) : null,
+        collection: body.collection || null,
+        isFeatured: body.isFeatured ?? false,
+        isActive: body.isActive ?? true,
+        metaTitle: body.metaTitle || null,
+        metaDesc: body.metaDesc || null,
+      })
+      .select("*, images:product_images(*), category:categories(id,name,slug)")
+      .single();
+    if (error) throw error;
+    return Response.json({ product }, { status: 201 });
+  } catch (err) {
+    console.error(err);
+    return Response.json({ error: "Failed to create product" }, { status: 500 });
+  }
+}
+
 export async function PATCH(req: NextRequest) {
   try {
     await requireAdmin();
