@@ -6,7 +6,9 @@ export async function POST() {
   const refreshToken = cookieStore.get("refresh_token")?.value;
 
   if (refreshToken) {
-    await supabase.from("refresh_tokens").delete().eq("token", refreshToken).catch(() => {});
+    try {
+      await supabase.from("refresh_tokens").delete().eq("token", refreshToken);
+    } catch {}
   }
 
   const res = Response.json({ ok: true });

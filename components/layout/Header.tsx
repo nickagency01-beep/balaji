@@ -23,6 +23,7 @@ const NAV = [
   { label: "New Arrivals", href: "/catalog?sort=newest" },
   { label: "Bestsellers", href: "/catalog?sort=featured" },
   { label: "Design Your Own", href: "/designer" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
