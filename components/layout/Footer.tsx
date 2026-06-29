@@ -1,4 +1,6 @@
-﻿import Link from "next/link";
+﻿"use client";
+
+import Link from "next/link";
 import { Share2, Rss, PlayCircle, Mail, Phone, MapPin } from "lucide-react";
 
 const LINKS = {
