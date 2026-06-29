@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 import ProductDetailClient from "./ProductDetailClient";
 
 export async function generateMetadata({
@@ -9,16 +9,17 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = await prisma.product.findUnique({
-    where: { slug },
-    select: { name: true, metaTitle: true, metaDesc: true, description: true },
-  }).catch(() => null);
+  const { data: product } = await supabase
+    .from("products")
+    .select("name, metaTitle, metaDesc, description")
+    .eq("slug", slug)
+    .single();
 
   if (!product) return { title: "Product Not Found" };
 
   return {
     title: product.metaTitle ?? product.name,
-    description: product.metaDesc ?? product.description.slice(0, 160),
+    description: product.metaDesc ?? product.description?.slice(0, 160),
   };
 }
 
@@ -29,30 +30,24 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
 
-  const product = await prisma.product.findUnique({
-    where: { slug, isActive: true },
-    include: {
-      images: { orderBy: { sortOrder: "asc" } },
-      category: true,
-      reviews: {
-        include: { user: { select: { name: true } } },
-        orderBy: { createdAt: "desc" },
-        take: 20,
-      },
-    },
-  }).catch(() => null);
+  const { data: product } = await supabase
+    .from("products")
+    .select(
+      `*, images:product_images(*), category:categories(id,name,slug), reviews:product_reviews(*, user:users(name))`
+    )
+    .eq("slug", slug)
+    .eq("isActive", true)
+    .single();
 
   if (!product) notFound();
 
-  const related = await prisma.product.findMany({
-    where: {
-      categoryId: product.categoryId,
-      isActive: true,
-      id: { not: product.id },
-    },
-    include: { images: true, category: true },
-    take: 4,
-  }).catch(() => []);
+  const { data: related } = await supabase
+    .from("products")
+    .select(`*, images:product_images(*), category:categories(id,name,slug)`)
+    .eq("categoryId", product.categoryId)
+    .eq("isActive", true)
+    .neq("id", product.id)
+    .limit(4);
 
-  return <ProductDetailClient product={product as never} related={related as never} />;
+  return <ProductDetailClient product={product as never} related={(related ?? []) as never} />;
 }

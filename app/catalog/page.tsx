@@ -1,6 +1,6 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import CatalogClient from "./CatalogClient";
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 
 export const metadata: Metadata = {
   title: "Collections — Fine Jewelry",
@@ -21,58 +21,39 @@ interface SearchParams {
 }
 
 async function getProducts(params: SearchParams) {
-  const where: Record<string, unknown> = { isActive: true };
-
-  if (params.search) {
-    where.OR = [
-      { name: { contains: params.search, mode: "insensitive" } },
-      { description: { contains: params.search, mode: "insensitive" } },
-      { gemstone: { contains: params.search, mode: "insensitive" } },
-    ];
-  }
-
-  if (params.category) {
-    where.category = { slug: params.category };
-  }
-  if (params.collection) {
-    where.collection = { equals: params.collection, mode: "insensitive" };
-  }
-  if (params.gemstone) {
-    where.gemstone = { contains: params.gemstone, mode: "insensitive" };
-  }
-  if (params.metal) {
-    where.metalType = params.metal;
-  }
-  if (params.priceMin || params.priceMax) {
-    where.price = {
-      ...(params.priceMin ? { gte: Number(params.priceMin) } : {}),
-      ...(params.priceMax ? { lte: Number(params.priceMax) } : {}),
-    };
-  }
-
-  const sortMap: Record<string, Record<string, unknown>> = {
-    price_asc: { price: "asc" },
-    price_desc: { price: "desc" },
-    newest: { createdAt: "desc" },
-    featured: { isFeatured: "desc" },
-  };
-  const orderBy = sortMap[params.sort ?? "featured"] ?? { isFeatured: "desc" };
-
   const page = Math.max(1, Number(params.page ?? 1));
   const perPage = 24;
 
   try {
-    const [products, total] = await Promise.all([
-      prisma.product.findMany({
-        where,
-        include: { images: true, category: true },
-        orderBy,
-        skip: (page - 1) * perPage,
-        take: perPage,
-      }),
-      prisma.product.count({ where }),
-    ]);
-    return { products, total, page, perPage };
+    let query = supabase
+      .from("products")
+      .select(`*, images:product_images(*), category:categories(id,name,slug)`, { count: "exact" })
+      .eq("isActive", true);
+
+    if (params.search) {
+      query = query.or(
+        `name.ilike.%${params.search}%,description.ilike.%${params.search}%,gemstone.ilike.%${params.search}%`
+      );
+    }
+    if (params.category) query = query.eq("categories.slug", params.category);
+    if (params.collection) query = query.ilike("collection", params.collection);
+    if (params.gemstone) query = query.ilike("gemstone", `%${params.gemstone}%`);
+    if (params.metal) query = query.eq("metalType", params.metal);
+    if (params.priceMin) query = query.gte("price", Number(params.priceMin));
+    if (params.priceMax) query = query.lte("price", Number(params.priceMax));
+
+    if (params.sort === "price_asc") query = query.order("price", { ascending: true });
+    else if (params.sort === "price_desc") query = query.order("price", { ascending: false });
+    else if (params.sort === "newest") query = query.order("createdAt", { ascending: false });
+    else query = query.order("isFeatured", { ascending: false });
+
+    const { data: products, error, count } = await query.range(
+      (page - 1) * perPage,
+      page * perPage - 1
+    );
+
+    if (error) throw error;
+    return { products: products ?? [], total: count ?? 0, page, perPage };
   } catch {
     return { products: [], total: 0, page: 1, perPage };
   }

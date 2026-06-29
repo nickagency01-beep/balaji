@@ -7,6 +7,7 @@ interface AuthUser {
   email: string;
   name: string;
   role: "CUSTOMER" | "ADMIN";
+  phone?: string;
 }
 
 interface AuthStore {
